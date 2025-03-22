@@ -5,9 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tigre-da-Tasmânia</title>
 </head>
-<body style="font-family: Arial; text-align: center; background-color: #f4f4f4; padding: 20px; color: #333;">
-    <h1>Tigre-da-Tasmânia</h1>
-    <img src="https://ciclovivo.com.br/wp-content/uploads/2015/009/img/noticias/tigre.jpg" alt="Tigre-da-Tasmânia" style="border-radius: 10px;">
-    <h3 style="max-width: 600px; margin: 20px auto;">O Tigre-da-Tasmânia, ou Tilacino, era um marsupial carnívoro nativo da Austrália e da Nova Guiné. Foi declarado extinto em 1936 devido à caça excessiva e destruição do seu habitat.</h3>
+<style>
+    html, body {
+        height: 100%;
+        overflow: hidden;
+        background-color: #f4f4f4;
+    }
+    .header {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        li {
+            cursor: pointer;
+            font-weight: bold;
+            color: #333;
+            font-family: Arial;
+            font-size: 18px;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+            &:hover, &.active {
+                background-color: #bbb;
+            }
+        }
+    }
+    div.content {
+        font-family: Arial;
+        text-align: center;
+        padding: 20px;
+        color: #333;
+        height: 100%;
+    }
+</style>
+<body>
+    <ul class="header">
+        <li to="./tasmania.html">&lt;</li>
+        <li to="tasmania.html">Atividade 1</li>
+        <li to="carta.html">Atividade 2</li>
+        <li to="./carta.html">&gt;</li>
+    </ul>
+    <div class="content">
+        <h1>Tigre-da-Tasmânia</h1>
+        <img src="https://ciclovivo.com.br/wp-content/uploads/2015/009/img/noticias/tigre.jpg" alt="Tigre-da-Tasmânia" style="border-radius: 10px;">
+        <h3 style="max-width: 600px; margin: 20px auto;">O Tigre-da-Tasmânia, ou Tilacino, era um marsupial carnívoro nativo da Austrália e da Nova Guiné. Foi declarado extinto em 1936 devido à caça excessiva e destruição do seu habitat.</h3>
+    </div>
 </body>
+<script>
+    const url = new URL(window.location.href);
+    const links = document.querySelectorAll('.header li');
+    links.forEach(link => {
+        if (url.pathname.includes(link.getAttribute('to'))) {
+            link.classList.add('active');
+        }
+    });
+
+    links.forEach(link => {
+        link.addEventListener('click', (event) => {
+            const to = event.target.getAttribute('to');
+            if (to) {
+                window.location.href = to;
+            }
+        });
+    });
+</script>
 </html>
