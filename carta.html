@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta</title>
+</head>
+<style>
+    html, body {
+        height: 100%;
+        overflow: hidden;
+        background-color: #f4f4f4;
+    }
+    .header {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        li {
+            cursor: pointer;
+            font-weight: bold;
+            color: #333;
+            font-family: Arial;
+            font-size: 18px;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+            &:hover, &.active {
+                background-color: #bbb;
+            }
+        }
+    }
+    div.content {
+        width: 500px;
+        margin: 50px auto;
+        font-family: Arial;
+        text-align: center;
+        padding: 30px;
+        color: #333;
+        background-color: #fdf5e6;
+        border: 1px solid black;
+        border-radius: 10px;
+        
+        h2 {
+            margin: 0;
+        }
+
+        p {
+            padding: 0;
+            margin: 0;
+            text-align: left;
+
+            &.main {
+                text-indent: 40px;
+            }
+
+            &:last-child {
+                text-align: right;
+            }
+        }
+    }
+</style>
+<body>
+    <ul class="header">
+        <li to="./tasmania.html">&lt;</li>
+        <li to="tasmania.html">Atividade 1</li>
+        <li to="carta.html">Atividade 2</li>
+        <li to="./carta.html">&gt;</li>
+    </ul>
+    <div class="content">
+        <h2>Carta do Leitor</h2>
+        <br />
+        <p>São Paulo, 22 de novembro de 2008</p>
+        <br />
+        <p>À revista Veja,</p>
+        <br />
+        <p class="main">
+            Gostaria de parabelizar a equipe de redação pela excelente entrevista. Eu, como homem e responsável pelo sustento do lar, concordo plenamente com os argumentos apresentados pelo historiador Van Creveld. Nós homens carregamos nos ombros uma carga imensa, seja por motivos de ordem financeira ou familiar. E, por isso, com certeza sofremos muito mais com o estresse do que as mulheres que desfrutam de paz e tranquilidade em seus lares.
+        </p>
+        <br />
+        <p>Atenciosamente,<br />José Antônio Souza</p>
+    </div>
+</body>
+<script>
+    const url = new URL(window.location.href);
+    const links = document.querySelectorAll('.header li');
+    links.forEach(link => {
+        if (url.pathname.includes(link.getAttribute('to'))) {
+            link.classList.add('active');
+        }
+    });
+
+    links.forEach(link => {
+        link.addEventListener('click', (event) => {
+            const to = event.target.getAttribute('to');
+            if (to) {
+                window.location.href = to;
+            }
+        });
+    });
+</script>
+</html>
